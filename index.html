@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Voting System</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .header {
+      width: 100%;
+      background-color: #000;
+      padding: 1rem;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2rem;
+      padding-right: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    .login-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .login-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .main-content {
+      display: flex;
+      min-height: calc(100vh - 70px);
+      background-color: #000;
+      color: white;
+    }
+
+    .left-section {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .right-section {
+      flex: 1;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo-container {
+      max-width: 400px;
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    .content-header {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+
+    .content-title {
+      font-size: 64px;
+      color: #007bff;
+      margin-bottom: 2rem;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 12px 32px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn-secondary {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .features-section {
+      background-color: white;
+      padding: 4rem 2rem;
+      margin-bottom: 40px;
+    }
+
+    .features-container {
+      margin: 0 auto;
+      width: 80%;
+    }
+
+    .features-title {
+      font-size: 48px;
+      margin-bottom: 3rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .features-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 100%;
+      height: 4px;
+      background-color: #007bff;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .feature-text {
+      font-size: 18px;
+      color: #333;
+    }
+
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .about-container {
+      background-color: #00162e;
+      padding: 4rem 2rem;
+      justify-items: center;
+      padding: 100px 0px;
+    }
+
+    .about-title {
+      color: white;
+      font-size: 48px;
+      margin-bottom: 1rem;
+      position: relative;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .horizontal-line {
+      background-color: white;
+      border: 20px;
+      border-color: white;
+      width: 85%;
+      height: 2px;
+      justify-items: center;
+    }
+
+    .about-content {
+      color: white;
+      font-size: x-large;
+      text-align: center;
+      padding: 0px 80px;
+    }
+
+    .steps-container {
+      justify-items: center;
+    }
+
+    .steps-content {
+      width: 80%;
+      justify-items: center;
+      align-items: center;
+      display: flex;
+      margin-top: 30px;
+    }
+
+    .steps-content img {
+      width: 80px;
+      height: 80px;
+
+    }
+
+    .steps-heading {
+      text-align: center;
+      font-weight: 700;
+      font-size: 74px;
+    }
+
+    .steps-title {
+      text-align: center;
+      font-weight: 500;
+      font-size: 30px;
+      margin-left: 40px;
+    }
+
+    .steps-line {
+      background-color: #007bff;
+      border: 20px;
+      width: 80%;
+      height: 5px;
+      margin-top: -50px;
+      justify-items: center;
+    }
+
+    .footer {
+      width: 100%;
+      height: 50vh;
+      background-color: #00162e;
+      display: flex;
+      margin-top: 80px;
+    }
+
+    .footer h2 {
+      font-size: 18px;
+    }
+
+    .left-footer {
+      color: white;
+      width: 30%;
+      justify-items: center;
+      align-content: center;
+    }
+
+    .left-footer h2 {
+      color: #007bff;
+    }
+
+    .mid-footer {
+      width: 40%;
+      justify-items: center;
+      margin-top: 30px;
+      color: white;
+      /* border: 2px solid grey; */
+      border-left: 2px solid grey;
+      border-right: 2px solid grey;
+    }
+
+    .right-footer {
+      color: white;
+      width: 30%;
+      padding-left: 30px;
+    }
+
+    .mid-upper-section {
+      display: flex;
+      width: 80%;
+    }
+
+    .mid-upper-section h2 {
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    .Links {
+      width: 100%;
+    }
+
+    .mid-lower-section {
+      display: flex;
+      gap: 20px;
+      margin-top: 50px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .mid-lower-section img {
+      height: 50px;
+      width: 50px;
+    }
+
+    .right-footer h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 50px;
+    }
+
+    .email {
+      width: 100%;
+      height: 100%;
+    }
+
+    .email-holder {
+      height: 30px;
+      width: 70%;
+    }
+
+    .message-holder {
+      height: 140px;
+      width: 70%;
+      margin-top: 20px;
+    }
+
+    .submit-button {
+      margin-top: 30px;
+    }
+
+    .submit-button {
+      font-size: 12px;
+      font-weight: 500;
+      color: white;
+      background-color: #007bff;
+      padding: 8px 15px;
+      border: none;
+    }
+
+    .submit-button:hover {
+      color: #007bff;
+      background-color: white;
+      transition: 100ms;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="login-btn">Login</button>
+    </nav>
+  </header>
+
+  <div class="main-content">
+    <div class="left-section">
+      <div class="logo-container">
+        <img src="src/assets/logo.svg" alt="Let's Vote">
+      </div>
+    </div>
+    <div class="right-section">
+      <h2 class="content-header">Be a part of decision</h2>
+      <h1 class="content-title">Vote Today</h1>
+      <div class="button-group">
+        <button class="btn btn-primary">Register</button>
+        <button class="btn btn-secondary">Read More</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <div class="features-container">
+      <h2 class="features-title">Features</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <img src="src/assets/Lock.svg" alt="Security" class="feature-icon">
+          <span class="feature-text">Secured by 256 bit encryption</span>
+        </div>
+        <div class="feature-item">
+          <img src="src/assets/diamond.svg" alt="Ethereum" class="feature-icon">
+          <span class="feature-text">Backed by ethereum based technology</span>
+        </div>
+        <div class="feature-item">
+          <img src="src/assets/done.svg" alt="Verification" class="feature-icon">
+          <span class="feature-text">Verifiable transactions</span>
+        </div>
+        <div class="feature-item">
+          <img src="src/assets/Hand Cursor.svg" alt="Easy to use" class="feature-icon">
+          <span class="feature-text">Easy to use</span>
+        </div>
+        <div class="feature-item">
+          <img src="src/assets/Low Price.svg" alt="Cheaper" class="feature-icon">
+          <span class="feature-text">Cheaper than ballot voting system</span>
+        </div>
+        <div class="feature-item">
+          <img src="src/assets/Time Span.svg" alt="Faster" class="feature-icon">
+          <span class="feature-text">Faster voting process</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-container">
+    <h2 class="about-title">About</h2>
+    <div class="horizontal-line"></div>
+    <p class="about-content">An online voting system that will replace the old ballot system or paper system. Over the
+      time we have utilized the required technology in every sector to improve efficiency and save the extra resources.
+      But the voting system is still very expensive and requires a bigger workforce. The system is slower and still not
+      completelt not temper proof. We bring the system that is safe, reliable and solve the modern issues like higer
+      reachibility of booth, crowd free voting, inexpensive, faster results and others. </p>
+  </div>
+  <div class="steps-section">
+    <div class="steps-container">
+      <h2 class="steps-heading">Follow these easy steps</h2>
+      <div class="steps-line"></div>
+      <div class="steps-content">
+        <img src="src/assets/register.png" alt="Register">
+        <span class="steps-title">Register yourself by fulling the required informations</span>
+      </div>
+      <div class="steps-content">
+        <img src="src/assets/signin.svg" alt="Signin">
+        <span class="steps-title">Signin as user</span>
+      </div>
+      <div class="steps-content">
+        <img src="src/assets/Vector.svg">
+        <span class="steps-title">Go to vote option dashboard</span>
+      </div>
+      <div class="steps-content">
+        <img src="src/assets/Key.svg" alt="Cheaper">
+        <span class="steps-title">Give security key</span>
+      </div>
+      <div class="steps-content">
+        <img src="src/assets/done.svg" alt="Done">
+        <span class="steps-title">Vote your candidate and submit</span>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="left-footer">
+        <div class="Contacts">
+          <h2>Contacts:</h2>
+          <p>1800 9090 32</p>
+          <p>1800 9000 64</p>
+          <h2>Helpline Number:</h2>
+          <p>9090123446</p>
+          <p>9090123447</p>
+          <h2>Email:</h2>
+          <p>coreboost526@gmail.com</p>
+          <p>corelock527@gmail.com</p>
+        </div>
+      </div>
+      <div class="mid-footer">
+        <div class="mid-upper-section">
+          <div class="Links">
+            <h2>GetIn</h2>
+            <p>Login</p>
+            <p>Register</p>
+          </div>
+          <div class="Links">
+            <h2>Know More</h2>
+            <p>Features</p>
+            <p>About</p>
+            <p>Steps</p>
+          </div>
+          <div class="Links">
+            <h2>Follow Us</h2>
+            <p>Facebook</p>
+            <p>Instagram</p>
+            <p>Twitter</p>
+          </div>
+        </div>
+        <div class="mid-lower-section">
+          <img src="src/assets/twitter.png" alt="Twitter" class="Twitter">
+          <img src="src/assets/facebook.png" alt="Facebook" class="Facebook">
+          <img src="src/assets/instagram.png" alt="Instagram" class="Instagram">
+        </div>
+        <p>© coreboost</p>
+      </div>
+      <div class="right-footer">
+        <div>
+          <h2>Quick Feedback:</h2>
+          <div class="email-holder">
+            <input type="text" placeholder="Email" class="email">
+          </div>
+          <div class="message-holder">
+            <textarea name="message" id="message" rows="10" cols="41" placeholder="Message"></textarea>
+          </div>
+          <button class="submit-button">Submit</button>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
