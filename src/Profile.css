@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #001323;
+    color: white;
+    min-height: 100vh;
+    justify-items: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    margin-right: 40px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #0066FF;
+}
+
+.vote-button {
+    background-color: #0066FF;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.logout-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #bb2d3b;
+    transform: translateY(-2px);
+}
+
+.profile-container {
+    padding: 20px 40px;
+    display: flex;
+    gap: 60px;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-width: 250px;
+}
+
+.profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-picture img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.profile-picture img:hover {
+    opacity: 0.9;
+}
+
+.change-picture-btn {
+    background-color: #0066FF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.change-picture-btn.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.edit-profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: #0066FF;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.edit-profile-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.edit-profile-btn.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-top: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-item .value {
+    transition: all 0.3s ease;
+}
+
+.info-row, .status-row {
+    display: flex;
+    gap: 100px;
+}
+
+.label {
+    color: #0066FF;
+    font-size: 14px;
+}
+
+.value {
+    font-size: 18px;
+    color: white;
+}
+
+.status-row .value {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.edit-input {
+    background: transparent;
+    border: 1px solid #0066FF;
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.edit-input:focus {
+    outline: none;
+    border-color: #0066FF;
+    box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.2);
+}
+
+/* Hover effects */
+.vote-button:hover {
+    background-color: #0052cc;
+    transform: translateY(-2px);
+}
+
+.change-picture-btn:hover {
+    background-color: #0052cc;
+    transform: translateY(-2px);
+}
+
+.edit-profile-btn:hover {
+    color: #0052cc;
+}
+
+.nav-links a:hover {
+    color: #0066FF;
+    transform: translateY(-2px);
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .profile-section {
+        align-items: center;
+        width: 100%;
+    }
+
+    .info-section {
+        padding-top: 0;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .edit-input {
+        max-width: 100%;
+    }
+
+    .nav-buttons {
+        gap: 0.5rem;
+    }
+    
+    .vote-button,
+    .logout-button {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}

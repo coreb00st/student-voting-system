@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="Profile.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#" class="active">Personal Info</a>
+            <a href="Election.html">Elections</a>
+            <a href="dashboard.html#footer-contact">Contact</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="vote-button">Vote</button>
+            <button class="logout-button">Logout</button>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-section">
+            <div class="profile-picture">
+                <img src="assets/Profile.png" alt="Profile Picture">
+                <button class="change-picture-btn">Change profile picture</button>
+            </div>
+            <button class="edit-profile-btn">
+                <img src="assets/edit.png" alt="Edit">
+                Edit Profile
+            </button>
+        </div>
+
+        <div class="info-section">
+            <div class="info-item">
+                <span class="label">Name:</span>
+                <span class="value"></span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Father's/Mother's Name:</span>
+                <span class="value"></span>
+            </div>
+
+            <div class="info-row">
+                <div class="info-item">
+                    <span class="label">Age:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Mobile Number:</span>
+                    <span class="value"></span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Email:</span>
+                <span class="value"></span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Aadhar Number:</span>
+                <span class="value"></span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Address:</span>
+                <span class="value">Not provided</span>
+            </div>
+
+            <div class="status-row">
+                <div class="info-item">
+                    <span class="label">Eligible:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Verified:</span>
+                    <span class="value"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

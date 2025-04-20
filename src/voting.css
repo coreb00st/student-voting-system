@@ -1,0 +1,602 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #0D1117;
+    color: white;
+    justify-items: center;
+}
+
+.voting-panel {
+    width: 80vw;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #001323;
+    color: white;
+    border-radius: 8px;
+}
+
+.voting-panel h2 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.voting-nav {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(-5px);
+}
+
+.candidate-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.candidate {
+    background-color: #1C2733;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s ease-out, background-color 0.3s ease;
+}
+
+.candidate:active {
+    transform: scale(0.98);
+}
+
+.candidate.selected {
+    background-color: #2C3B4B;
+    border: 1px solid #3B82F6;
+}
+
+.candidate-info {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+.candidate-photo .photo-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #2D3B48;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.candidate-photo .photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+}
+
+.candidate-details {
+    flex-grow: 1;
+}
+
+.candidate-details h3 {
+    margin: 0;
+    font-size: 16px;
+    color: white;
+}
+
+.candidate-details p {
+    margin: 5px 0 0;
+    color: #8B949E;
+    font-size: 14px;
+}
+
+.candidate-symbol {
+    margin-left: auto;
+    padding-right: 15px;
+}
+
+.candidate-symbol img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+}
+
+.expand-arrow {
+    color: #8B949E;
+    font-size: 20px;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+.selected .expand-arrow {
+    transform: rotate(-90deg);
+}
+
+.candidate-expanded {
+    padding: 15px;
+    border-top: 1px solid #30363D;
+    display: none;
+}
+
+.selected .candidate-expanded {
+    display: block;
+}
+
+.candidate-expanded p {
+    margin: 8px 0;
+    color: #8B949E;
+    font-size: 14px;
+}
+
+.vote-confirmation {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #8B949E;
+    user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+
+.submit-btn {
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2563EB;
+}
+
+.submit-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submit-btn.loading {
+    position: relative;
+    color: white;
+    cursor: wait;
+    background-color: #2563EB;
+}
+
+.submit-btn.success {
+    background-color: #10B981;
+}
+
+.submit-btn.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Add confirmation animation */
+@keyframes confirmShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Instructions Dialog Styles */
+.instructions-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.dialog-content {
+    background-color: #001323;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 8px;
+    padding: 2rem;
+    color: white;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.dialog-content h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #0066FF;
+}
+
+.instructions-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.instructions-box p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.instructions-box h4 {
+    color: #0066FF;
+    margin-bottom: 1rem;
+}
+
+.instructions-box ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.instructions-box ul li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.instructions-box ul li:before {
+    content: "•";
+    color: #0066FF;
+    position: absolute;
+    left: 0;
+}
+
+.confirmation-checkbox {
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.confirmation-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cancel-btn, .proceed-btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.proceed-btn {
+    background-color: #0066FF;
+    color: white;
+}
+
+.proceed-btn:disabled {
+    background-color: rgba(0, 102, 255, 0.5);
+    cursor: not-allowed;
+}
+
+.cancel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.proceed-btn:not(:disabled):hover {
+    background-color: #0052cc;
+}
+
+/* Add scrollbar styling */
+.dialog-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dialog-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.dialog-content::-webkit-scrollbar-thumb {
+    background: #0066FF;
+    border-radius: 4px;
+}
+
+/* Security Dialog Styles */
+.security-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.security-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.key-input {
+    margin: 2rem 0;
+}
+
+#securityKey {
+    width: 200px;
+    padding: 12px;
+    font-size: 24px;
+    letter-spacing: 8px;
+    text-align: center;
+    background: transparent;
+    border: 2px solid #0066FF;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.key-hint {
+    color: #8B949E;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.verify-btn {
+    background-color: #0066FF;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.verify-btn:disabled {
+    background-color: rgba(0, 102, 255, 0.5);
+    cursor: not-allowed;
+}
+
+.verify-btn:not(:disabled):hover {
+    background-color: #0052cc;
+}
+
+/* Security Key Input Animation */
+@keyframes shake-invalid {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.invalid-key {
+    animation: shake-invalid 0.5s ease-in-out;
+    border-color: #ff4444 !important;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .voting-panel {
+        width: 95vw;
+        padding: 15px;
+        margin: 20px auto;
+    }
+
+    .voting-panel h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .candidate-info {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .candidate-photo .photo-circle {
+        width: 35px;
+        height: 35px;
+    }
+
+    .candidate-details h3 {
+        font-size: 14px;
+    }
+
+    .candidate-details p {
+        font-size: 12px;
+    }
+
+    .candidate-symbol img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .candidate-expanded {
+        padding: 10px;
+    }
+
+    .candidate-expanded p {
+        font-size: 12px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 12px 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .voting-panel {
+        width: 100vw;
+        margin: 10px auto;
+        padding: 10px;
+        border-radius: 0;
+    }
+
+    .candidate-info {
+        flex-wrap: wrap;
+    }
+
+    .candidate-details {
+        width: calc(100% - 50px);
+    }
+
+    .candidate-symbol {
+        order: -1;
+        padding-right: 0;
+        margin-left: 0;
+    }
+
+    .expand-arrow {
+        font-size: 18px;
+    }
+
+    .vote-confirmation {
+        margin-top: 20px;
+        gap: 15px;
+    }
+
+    .checkbox-container span {
+        font-size: 13px;
+    }
+}
+
+/* iPhone SE specific styles */
+@media screen and (max-width: 375px) {
+    body {
+        padding: 5px;
+    }
+
+    .voting-panel {
+        width: 100%;
+        margin: 5px 0;
+        padding: 8px;
+    }
+
+    .voting-panel h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .candidate-list {
+        gap: 10px;
+    }
+
+    .candidate {
+        border-radius: 6px;
+    }
+
+    .candidate-info {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .candidate-photo .photo-circle {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+    }
+
+    .candidate-details h3 {
+        font-size: 13px;
+        line-height: 1.2;
+    }
+
+    .candidate-details p {
+        font-size: 11px;
+        margin-top: 2px;
+    }
+
+    .candidate-symbol img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .candidate-expanded {
+        padding: 8px;
+    }
+
+    .candidate-expanded p {
+        font-size: 11px;
+        margin: 4px 0;
+        line-height: 1.3;
+    }
+
+    .vote-confirmation {
+        margin-top: 15px;
+        gap: 12px;
+    }
+
+    .checkbox-container {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+
+    .submit-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+        width: 100%;
+    }
+}

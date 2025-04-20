@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #001323;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 20px;
+    gap: 50px;
+}
+
+.image-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.login-illustration {
+    max-width: 100%;
+    height: auto;
+}
+
+.form-section {
+    flex: 1;
+    padding: 40px;
+    color: white;
+}
+
+.lock-icon {
+    background-color: #0066FF;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.lock-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #8B949E;
+    background: none;
+    border: none;
+    font-size: 14px;
+}
+
+.form-group .toggle-password:hover {
+    color: #0066FF;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0066FF;
+}
+
+input.error {
+    border-color: #ff4444;
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 0.75rem;
+    margin-top: 4px;
+    display: none;
+}
+
+.form-links {
+    margin: 20px 0;
+}
+
+.forgot-password {
+    color: #0066FF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.register-link {
+    margin-top: 10px;
+    color: white;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #0066FF;
+    text-decoration: none;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0066FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #0052cc;
+}
+
+.login-button.loading {
+    position: relative;
+    color: transparent;
+    cursor: wait;
+}
+
+.login-button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s infinite linear;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

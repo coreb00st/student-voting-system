@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Student Voting System - Cast your vote">
+    <meta name="theme-color" content="#001323">
+    <title>Student Voting System - Vote</title>
+    <link rel="stylesheet" href="voting.css">
+</head>
+
+<body>
+    <!-- Instructions Dialog -->
+    <div class="instructions-dialog" id="instructionsDialog">
+        <div class="dialog-content">
+            <h3>This election is being conducted by the election commission of India.</h3>
+            <div class="instructions-box">
+                <p>You, as being a member of the constituency under the constituencies of Uttar Pradesh State Election, are allowed to vote. Please take the following steps in order to cast a valid vote. You are requested to cast vote on your own decision and not by being pressenurized or terroized by someone. If someone threatens you for making a voting decison please contact the given helpline numbers.</p>
+                
+                <h4>Steps:</h4>
+                <ul>
+                    <li>Stay in the frame of your camera alone and with sufficient lighting for the entire duration.</li>
+                    <li>Have Security Keys with you as you would require it to proceed.</li>
+                    <li>You are allowed to make only one vote per election.</li>
+                    <li>You are allowed to choose only one candidate per election.</li>
+                    <li>Candidates information are available on the page.</li>
+                    <li>Make sure that you are selecting your wanted candidate by confirming the name and symbol on the screen.</li>
+                    <li>After selecting the candidates make sure to submit the vote.</li>
+                    <li>Result will be announced after 5 days of election being completed.</li>
+                    <li>You can verify your vote after the election results are announced.</li>
+                </ul>
+                
+                <div class="confirmation-checkbox">
+                    <input type="checkbox" id="understand" required>
+                    <label for="understand">I understand and will follow above steps.</label>
+                </div>
+                
+                <div class="dialog-buttons">
+                    <button class="cancel-btn">Cancel</button>
+                    <button class="proceed-btn" disabled>Proceed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Key Verification -->
+    <div class="security-dialog" id="securityDialog" style="display: none;">
+        <div class="dialog-content">
+            <h3>Security Verification</h3>
+            <div class="security-box">
+                <p>Please enter your security key to proceed with voting.</p>
+                <div class="key-input">
+                    <input type="password" id="securityKey" placeholder="Enter Security Key" maxlength="6">
+                    <div class="key-hint">This is a 6-digit key sent to your registered email</div>
+                </div>
+                <div class="dialog-buttons">
+                    <button class="cancel-btn" id="cancelVerification">Cancel</button>
+                    <button class="verify-btn" disabled>Verify</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="voting-nav">
+        <button class="back-btn" onclick="window.location.href='Election.html'">&larr; Back to Elections</button>
+    </nav>
+    <div class="voting-panel">
+        <h2>Voting Panel</h2>
+        <div class="candidate-list">
+            <!-- Sanjeev Kumar -->
+            <div class="candidate selected">
+                <div class="candidate-info">
+                    <div class="candidate-photo">
+                        <div class="photo-circle">
+                            <img src="assets/Profile.png" alt="Baburao photo">
+                        </div>
+                    </div>
+                    <div class="candidate-details">
+                        <h3>Sanjeev Kumar</h3>
+                        <p>Independent</p>
+                    </div>
+                    <div class="expand-arrow">›</div>
+                </div>
+                <div class="candidate-expanded">
+                    <p>Name: Sanjeev Kumar</p>
+                    <p>Age: 20</p>
+                    <p>Party: Independent</p>
+                    <p>Education: Diploma in Electronics</p>
+                </div>
+            </div>
+
+            <!-- Narendra Modi -->
+            <div class="candidate">
+                <div class="candidate-info">
+                    <div class="candidate-photo">
+                        <div class="photo-circle">
+                            <img src="assets/Modi.png" alt="Narendra Modi photo">
+                        </div>
+                    </div>
+                    <div class="candidate-details">
+                        <h3>Naredra Modi</h3>
+                        <p>BJP</p>
+                    </div>
+                    <div class="candidate-symbol">
+                        <img src="assets/BJP.png" alt="BJP symbol">
+                    </div>
+                    <div class="expand-arrow">›</div>
+                </div>
+            </div>
+
+            <!-- Rahul Gandhi -->
+            <div class="candidate">
+                <div class="candidate-info">
+                    <div class="candidate-photo">
+                        <div class="photo-circle">
+                            <img src="assets/Rahul Gandhi.png" alt="Rahul Gandhi photo">
+                        </div>
+                    </div>
+                    <div class="candidate-details">
+                        <h3>Rahul Gandhi</h3>
+                        <p>Congress</p>
+                    </div>
+                    <div class="candidate-symbol">
+                        <img src="assets/Congress.png" alt="Congress symbol">
+                    </div>
+                    <div class="expand-arrow">›</div>
+                </div>
+            </div>
+
+            <!-- Arvind Kejriwal -->
+            <div class="candidate">
+                <div class="candidate-info">
+                    <div class="candidate-photo">
+                        <div class="photo-circle">
+                            <img src="assets/Kejriwal.png" alt="Arvind Kejriwal photo">
+                        </div>
+                    </div>
+                    <div class="candidate-details">
+                        <h3>Arvind Kejriwal</h3>
+                        <p>AAP</p>
+                    </div>
+                    <div class="candidate-symbol">
+                        <img src="assets/AAP.png" alt="AAP symbol">
+                    </div>
+                    <div class="expand-arrow">›</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vote-confirmation">
+            <label class="checkbox-container">
+                <input type="checkbox" id="vote-confirm">
+                <span>I confirm my vote for Sanjeev Kumar from Independent</span>
+            </label>
+            <button type="submit" class="submit-btn">SUBMIT VOTE</button>
+        </div>
+    </div>
+
+    <script src="js/voting.js"></script>
+</body>
+
+</html>
